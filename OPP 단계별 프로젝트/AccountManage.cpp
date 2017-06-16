@@ -1,42 +1,43 @@
 #include "common.h"
+#include "AccountManage.h"
 #define MAX_ACC_NUM 100
 #define NAME_LEN 20
 
-typedef struct _accountInfo {
-	int accNum;
-	char name[NAME_LEN];
-	int money;
-}accInfo;
-
-static accInfo accInfoList[MAX_ACC_NUM] = { 0 };
+static accInfo* accInfoList[MAX_ACC_NUM];
 static int accnum = 0;
 
 void MakeAccount(void) {
+	int id;
+	char name[NAME_LEN];
+	int money;
+
 	cout << "[계좌개설]" << endl;
 
 	cout << "계좌ID : ";
-	cin >> accInfoList[accnum].accNum;
+	cin >> id;
 	cout << "이 름 : ";
-	cin >> accInfoList[accnum].name;
+	cin >> name;
 	cout << "입금액 : ";
-	cin >> accInfoList[accnum++].money;
+	cin >> money;
+
+	accInfoList[accnum++] = new accInfo(id, name, money);
 
 	cout << "개설완료\n" << endl;
 }
 
 void Deposit(void) {
 	int inputAccnum, inputmoney;
-
 	cout << "[입금]" << endl;
 
 	cout << "계좌ID : ";
 	cin >> inputAccnum;
 
 	for (int i = 0; i < accnum; i++) {
-		if (inputAccnum == accInfoList[i].accNum) {
+		if (inputAccnum == accInfoList[i]->GetAccNum()) {
+			int currentMoney = accInfoList[i]->GetMoney();
 			cout << "입금액 : ";
 			cin >> inputmoney;
-			accInfoList[i].money += inputmoney;
+			accInfoList[i]->SetMoney(currentMoney + inputmoney);
 			cout << "입금완료\n" << endl;
 			return;
 		}
@@ -53,15 +54,16 @@ void Withdraw(void) {
 	cin >> withdrawAccnum;
 
 	for (int i = 0; i < accnum; i++) {
-		if (withdrawAccnum == accInfoList[i].accNum) {
-			cout << "현재 보유하고 계신 금액 : " << accInfoList[i].money << endl;
+		if (withdrawAccnum == accInfoList[i]->GetAccNum()) {
+			int currentMoney = accInfoList[i]->GetMoney();
+			cout << "현재 보유하고 계신 금액 : " << currentMoney << endl;
 			cout << "출금액 : ";
 			cin >> withdrawmoney;
-			if (withdrawmoney > accInfoList[i].money) {
+			if (withdrawmoney > currentMoney) {
 				cout << "출금액이 보유액보다 큽니다.\n" << endl;
 				return;
 			}
-			accInfoList[i].money -= withdrawmoney;
+			accInfoList[i]->SetMoney(currentMoney - withdrawmoney);
 			cout << "출금완료\n" << endl;
 			return;
 		}
@@ -72,9 +74,9 @@ void Withdraw(void) {
 
 void PrintAllAccountInfo(void) {
 	for (int i = 0; i < accnum; i++) {
-		cout << "계좌ID : " << accInfoList[i].accNum << endl;
-		cout << "이름 : " << accInfoList[i].name << endl;
-		cout << "잔액 : " << accInfoList[i].money << endl;
+		cout << "계좌ID : " << accInfoList[i]->GetAccNum() << endl;
+		cout << "이름 : " << accInfoList[i]->GetName()<< endl;
+		cout << "잔액 : " << accInfoList[i]->GetMoney() << endl;
 		cout << '\n' << endl;
 	}
 }
