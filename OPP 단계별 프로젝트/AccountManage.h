@@ -17,6 +17,10 @@ public:
 	~accInfo() {
 		delete[]name;
 	}
+	accInfo(const accInfo& ref) : accNum(ref.accNum), money(ref.accNum) {
+		this->name = new char[strlen(ref.name) + 1];
+		strcpy(this->name, ref.name);
+	}
 	int GetAccNum(void) {
 		return accNum;
 	}
