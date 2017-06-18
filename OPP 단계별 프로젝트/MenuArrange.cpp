@@ -1,4 +1,4 @@
-#include "common.h"
+ #include "common.h"
 #include "AccountManage.h"
 
 enum {MAKE = 1, DEPOSIT, WITHDRAW, INQUIRE, EXIT};

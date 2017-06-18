@@ -21,13 +21,13 @@ public:
 		this->name = new char[strlen(ref.name) + 1];
 		strcpy(this->name, ref.name);
 	}
-	int GetAccNum(void) {
+	int GetAccNum(void) const {
 		return accNum;
 	}
-	char* GetName(void) {
+	char* GetName(void) const {
 		return name;
 	}
-	int GetMoney(void) {
+	int GetMoney(void) const {
 		return money;
 	}
 	void SetAccNum(int num) {
