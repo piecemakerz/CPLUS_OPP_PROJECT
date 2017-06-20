@@ -1,5 +1,5 @@
  #include "common.h"
-#include "AccountManage.h"
+#include "AccountHandler.h"
 
 enum {MAKE = 1, DEPOSIT, WITHDRAW, INQUIRE, EXIT};
 void ShowMenu(void) {
@@ -12,7 +12,7 @@ void ShowMenu(void) {
 	return;
 }
 
-int SelectOption(void) {
+int SelectOption(AccountHandler &manager) {
 	int select;
 	cout << "¼±ÅÃ : ";
 	cin >> select;
@@ -22,16 +22,16 @@ int SelectOption(void) {
 	switch (select) {
 
 	case MAKE:
-		MakeAccount();
+		manager.MakeAccount();
 		break;
 	case DEPOSIT:
-		Deposit();
+		manager.Deposit();
 		break;
 	case WITHDRAW:
-		Withdraw();
+		manager.Withdraw();
 		break;
 	case INQUIRE:
-		PrintAllAccountInfo();
+		manager.PrintAllAccountInfo();
 		break;
 	case EXIT:
 		return 1;

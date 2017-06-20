@@ -1,12 +1,7 @@
-#include "common.h"
-#include "AccountManage.h"
-#define MAX_ACC_NUM 100
-#define NAME_LEN 20
+#include "AccountHandler.h"
+#define NAME_LEN 30
 
-static accInfo* accInfoList[MAX_ACC_NUM];
-static int accnum = 0;
-
-void MakeAccount(void) {
+void AccountHandler::MakeAccount(void) {
 	int id;
 	char name[NAME_LEN];
 	int money;
@@ -25,7 +20,7 @@ void MakeAccount(void) {
 	cout << "개설완료\n" << endl;
 }
 
-void Deposit(void) {
+void AccountHandler::Deposit(void) {
 	int inputAccnum, inputmoney;
 	cout << "[입금]" << endl;
 
@@ -46,7 +41,7 @@ void Deposit(void) {
 	cout << "해당하는 계좌ID가 존재하지 않습니다.\n" << endl;
 }
 
-void Withdraw(void) {
+void AccountHandler::Withdraw(void) {
 	int withdrawAccnum, withdrawmoney;
 	cout << "[출금]" << endl;
 
@@ -72,10 +67,10 @@ void Withdraw(void) {
 	cout << "해당하는 계좌ID가 존재하지 않습니다.\n" << endl;
 }
 
-void PrintAllAccountInfo(void) {
+void AccountHandler::PrintAllAccountInfo(void) {
 	for (int i = 0; i < accnum; i++) {
 		cout << "계좌ID : " << accInfoList[i]->GetAccNum() << endl;
-		cout << "이름 : " << accInfoList[i]->GetName()<< endl;
+		cout << "이름 : " << accInfoList[i]->GetName() << endl;
 		cout << "잔액 : " << accInfoList[i]->GetMoney() << endl;
 		cout << '\n' << endl;
 	}

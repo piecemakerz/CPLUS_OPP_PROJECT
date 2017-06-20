@@ -18,10 +18,10 @@
     <ClCompile Include="main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="AccountManage.cpp">
+    <ClCompile Include="MenuArrange.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="MenuArrange.cpp">
+    <ClCompile Include="AccountHandler.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -30,6 +30,9 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="MenuArrange.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="AccountHandler.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="AccountManage.h">

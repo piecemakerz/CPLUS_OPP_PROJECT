@@ -1,12 +1,14 @@
 #include "common.h"
 #include "MenuArrange.h"
 #include "AccountManage.h"
+#include "AccountHandler.h"
 
 int main(void) {
+	AccountHandler manager;
 	while (1) {
 		ShowMenu();
 
-		if (SelectOption())
+		if (SelectOption(manager))
 			break;
 
 	}

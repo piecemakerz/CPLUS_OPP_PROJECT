@@ -1,7 +1,6 @@
 #ifndef _ACCMANAGE_H__
 #define _ACCMANAGE_H__
-
-#include <iostream>
+#include "common.h"
 #include <cstring>
 
 class accInfo {
@@ -41,9 +40,4 @@ public:
 		this->money = money;
 	}
 };
-
-void MakeAccount(void);
-void Deposit(void);
-void Withdraw(void);
-void PrintAllAccountInfo(void);
 #endif
