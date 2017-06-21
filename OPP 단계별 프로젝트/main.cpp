@@ -1,6 +1,6 @@
 #include "common.h"
 #include "MenuArrange.h"
-#include "AccountManage.h"
+#include "AccInfo.h"
 #include "AccountHandler.h"
 
 int main(void) {

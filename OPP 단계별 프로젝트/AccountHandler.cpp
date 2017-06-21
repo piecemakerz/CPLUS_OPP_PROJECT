@@ -5,17 +5,56 @@ void AccountHandler::MakeAccount(void) {
 	int id;
 	char name[NAME_LEN];
 	int money;
+	int choice;
+	int interest;
+	int credrating;
 
 	cout << "[계좌개설]" << endl;
+	cout << "1.보통예금계좌 2.신용신뢰계좌" << endl;
+	cout << "선택: ";
+	cin >> choice;
 
-	cout << "계좌ID : ";
-	cin >> id;
-	cout << "이 름 : ";
-	cin >> name;
-	cout << "입금액 : ";
-	cin >> money;
+	if (choice != 1 && choice != 2) {
+		cout << "잘못된 선택입니다." << endl;
+		return;
+	}
 
-	accInfoList[accnum++] = new accInfo(id, name, money);
+	switch (choice) {
+	case 1:
+		cout << "[보통예금계좌 개설]" << endl;
+		cout << "계좌ID : ";
+		cin >> id;
+		cout << "이 름 : ";
+		cin >> name;
+		cout << "입금액 : ";
+		cin >> money;
+		cout << "이자율: ";
+		cin >> interest;
+
+		accInfoList[accnum++] = new NormalAccount(id, name, money, interest);
+		break;
+
+	case 2:
+		cout << "[신용신뢰계좌 개설]" << endl;
+		cout << "계좌ID : ";
+		cin >> id;
+		cout << "이 름 : ";
+		cin >> name;
+		cout << "입금액 : ";
+		cin >> money;
+		cout << "이자율: ";
+		cin >> interest;
+		cout << "신용등급(1toA, 2toB, 3toC): ";
+		cin >> credrating;
+
+		if (credrating != 1 && credrating != 2 && credrating != 3) {
+			cout << "잘못된 신용등급입니다." << endl;
+			return;
+		}
+
+		accInfoList[accnum++] = new HighCreditAccount(id, name, money, interest, credrating);
+		break;
+	}
 
 	cout << "개설완료\n" << endl;
 }

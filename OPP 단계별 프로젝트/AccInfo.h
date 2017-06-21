@@ -1,5 +1,5 @@
-#ifndef _ACCMANAGE_H__
-#define _ACCMANAGE_H__
+#ifndef _ACCINFO_H__
+#define _ACCINFO_H__
 #include "common.h"
 #include <cstring>
 
@@ -36,7 +36,7 @@ public:
 		this->name = new char[strlen(name) + 1];
 		strcpy(this->name, name);
 	}
-	void SetMoney(int money) {
+	virtual void SetMoney(int money) {
 		this->money = money;
 	}
 };

@@ -1,7 +1,9 @@
 #ifndef __ACCHANDLER_H__
 #define __ACCHANDLER_H__
 #include "common.h"
-#include "AccountManage.h"
+#include "AccInfo.h"
+#include "NormalAccount.h"
+#include "HighCreditAccount.h"
 #include <cstring>
 
 #define MAX_ACC_NUM 100

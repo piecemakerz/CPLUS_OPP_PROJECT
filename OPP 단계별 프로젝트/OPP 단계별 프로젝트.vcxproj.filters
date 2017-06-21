@@ -35,7 +35,13 @@
     <ClInclude Include="AccountHandler.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="AccountManage.h">
+    <ClInclude Include="AccInfo.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="NormalAccount.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="HighCreditAccount.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
