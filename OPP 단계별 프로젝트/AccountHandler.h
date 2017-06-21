@@ -1,23 +1,22 @@
-#ifndef __ACCHANDLER_H__
-#define __ACCHANDLER_H__
-#include "common.h"
-#include "AccInfo.h"
-#include "NormalAccount.h"
-#include "HighCreditAccount.h"
-#include <cstring>
+#ifndef __ACCOUNT_HANDLER_H__
+#define __ACCOUNT_HANDLER_H__
 
-#define MAX_ACC_NUM 100
-using namespace std;
+#include "Account.h"
 
 class AccountHandler {
 private:
-	accInfo* accInfoList[MAX_ACC_NUM];
-	int accnum;
+	Account * accArr[100];
+	int accNum;
 public:
-	AccountHandler() : accnum(0) {}
+	AccountHandler();
+	void ShowMenu(void) const;
 	void MakeAccount(void);
-	void Deposit(void);
-	void Withdraw(void);
-	void PrintAllAccountInfo(void);
+	void DepositMoney(void);
+	void WithdrawMoney(void);
+	void ShowAllAccInfo(void) const;
+	~AccountHandler();
+protected:
+	void MakeNormalAccount(void);
+	void MakeCreditAccount(void);
 };
 #endif

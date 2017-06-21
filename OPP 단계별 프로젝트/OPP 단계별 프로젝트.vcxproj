@@ -139,16 +139,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Account.cpp" />
     <ClCompile Include="AccountHandler.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="MenuArrange.cpp" />
+    <ClCompile Include="BankingSystemMain.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Account.h" />
     <ClInclude Include="AccountHandler.h" />
-    <ClInclude Include="AccInfo.h" />
-    <ClInclude Include="common.h" />
+    <ClInclude Include="BankingCommonDecl.h" />
     <ClInclude Include="HighCreditAccount.h" />
-    <ClInclude Include="MenuArrange.h" />
     <ClInclude Include="NormalAccount.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

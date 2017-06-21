@@ -15,10 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="BankingSystemMain.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="MenuArrange.cpp">
+    <ClCompile Include="Account.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="AccountHandler.cpp">
@@ -26,22 +26,19 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="common.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="MenuArrange.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="AccountHandler.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="AccInfo.h">
+    <ClInclude Include="Account.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="NormalAccount.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="HighCreditAccount.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="AccountHandler.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="BankingCommonDecl.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

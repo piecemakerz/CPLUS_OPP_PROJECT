@@ -1,24 +1,18 @@
-#ifndef __NORMALACC_H__
-#define __NORMALACC_H__
+#ifndef __NORMAL_ACCOUNT_H__
+#define __NORMAL_ACCOUNT_H__
 
-#include "common.h"
-#include "AccInfo.h"
-using namespace std;
+#include "Account.h"
 
-class NormalAccount : public accInfo {
+class NormalAccount : public Account {
 private:
-	int interest;
+	int interRate;
 public:
-	NormalAccount(int accNum, char * name, int money, int interest)
-		:accInfo(accNum, name, money), interest(interest)
+	NormalAccount(int ID, int money, char * name, int rate)
+		:Account(ID, money, name), interRate(rate)
 	{}
-	void SetMoney(int money) {
-		int inter_money = money* (1 + ((double)interest / 100));
-		accInfo::SetMoney(inter_money);
-	}
-	int GetInterest(void) {
-		return interest;
+	virtual void Deposit(int money) {
+		Account::Deposit(money);
+		Account::Deposit(money*(interRate / 100.0));
 	}
 };
-
 #endif
