@@ -3,6 +3,7 @@
 #include "Account.h"
 #include "NormalAccount.h"
 #include "HighCreditAccount.h"
+#include "AccountException.h"
 
 void AccountHandler::ShowMenu(void) const {
 	cout << "-----Menu-----" << endl;
@@ -49,7 +50,7 @@ void AccountHandler::MakeCreditAccount(void) {
 	int interRate;
 	int creditLevel;
 
-	cout << "[보통예금계좌 개설]" << endl;
+	cout << "[신용예금계좌 개설]" << endl;
 	cout << "계좌ID: "; cin >> id;
 	cout << "이름: "; cin >> name;
 	cout << "입금액: "; cin >> balance;
@@ -75,16 +76,25 @@ void AccountHandler::DepositMoney(void) {
 	int id;
 	cout << "[입금]" << endl;
 	cout << "계좌ID: "; cin >> id;
-	cout << "입금액: "; cin >> money;
+	while (true) {
+		cout << "입금액: "; cin >> money;
 
-	for (int i = 0; i < accNum; i++) {
-		if (accArr[i]->GetAccID() == id) {
-			accArr[i]->Deposit(money);
-			cout << "입금완료" << endl << endl;
+		try {
+			for (int i = 0; i < accNum; i++) {
+				if (accArr[i]->GetAccID() == id) {
+					accArr[i]->Deposit(money);
+					cout << "입금완료" << endl << endl;
+					return;
+				}
+			}
+			cout << "유효하지 않은 ID 입니다." << endl << endl;
 			return;
 		}
+		catch (AccountException &expn) {
+			expn.ShowExceptionReason();
+			cout << "입금액만 재입력하세요." << endl;
+		}
 	}
-	cout << "유효하지 않은 ID 입니다." << endl << endl;
 }
 
 void AccountHandler::WithdrawMoney(void) {
@@ -92,19 +102,30 @@ void AccountHandler::WithdrawMoney(void) {
 	int id;
 	cout << "[출금]" << endl;
 	cout << "계좌ID: "; cin >> id;
-	cout << "출금액: "; cin >> money;
-	for (int i = 0; i < accNum; i++) {
-		if (accArr[i]->GetAccID() == id) {
-			if (accArr[i]->Withdraw(money) == 0) {
-				cout << "잔액부족" << endl << endl;
-				return;
-			}
+	while (true)
+	{
+		cout << "출금액: "; cin >> money;
 
-			cout << "출금완료" << endl << endl;
+		try {
+			for (int i = 0; i < accNum; i++) {
+				if (accArr[i]->GetAccID() == id) {
+					if (accArr[i]->Withdraw(money) == 0) {
+						cout << "잔액부족" << endl << endl;
+						return;
+					}
+
+					cout << "출금완료" << endl << endl;
+					return;
+				}
+			}
+			cout << "유효하지 않은 ID 입니다." << endl << endl;
 			return;
 		}
+		catch (AccountException &expn) {
+			expn.ShowExceptionReason();
+			cout << "출금액만 재입력하세요." << endl;
+		}
 	}
-	cout << "유효하지 않은 ID 입니다." << endl << endl;
 }
 
 AccountHandler::AccountHandler() : accNum(0) {}

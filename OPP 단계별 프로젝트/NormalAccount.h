@@ -2,6 +2,7 @@
 #define __NORMAL_ACCOUNT_H__
 
 #include "Account.h"
+#include "AccountException.h"
 
 class NormalAccount : public Account {
 private:
@@ -11,6 +12,8 @@ public:
 		:Account(ID, money, name), interRate(rate)
 	{}
 	virtual void Deposit(int money) {
+		if (money < 0)
+			throw LessthanzeroException(money);
 		Account::Deposit(money);
 		Account::Deposit(money*(interRate / 100.0));
 	}

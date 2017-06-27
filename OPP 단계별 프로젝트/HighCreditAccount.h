@@ -11,6 +11,9 @@ public:
 		: NormalAccount(ID, money, name, rate), specialRate(special)
 	{}
 	virtual void Deposit(int money) {
+		if (money < 0)
+			throw LessthanzeroException(money);
+
 		NormalAccount::Deposit(money);
 		Account::Deposit(money*(specialRate / 100.0));
 	}

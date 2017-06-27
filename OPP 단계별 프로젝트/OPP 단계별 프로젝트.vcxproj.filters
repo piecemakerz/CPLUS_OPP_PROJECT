@@ -50,5 +50,8 @@
     <ClInclude Include="BoundCheckArray.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="AccountException.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
